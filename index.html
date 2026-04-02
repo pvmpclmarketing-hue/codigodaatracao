@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Código da Atração — Desperte o Poder que Existe em Você</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7a6230;
+    --ink: #0A0710;
+    --deep: #06040D;
+    --violet: #1A0B2E;
+    --violet-mid: #2D1657;
+    --mist: #D4C5E8;
+    --text: #EDE6F5;
+    --text-dim: #9E8FB8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── STARFIELD ── */
+  #starfield {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 0%, #1a0b2e 0%, #06040d 70%);
+  }
+  .star {
+    position: absolute; border-radius: 50%;
+    background: #fff; animation: twinkle var(--d,3s) ease-in-out infinite;
+    opacity: 0;
+  }
+  @keyframes twinkle {
+    0%,100%{opacity:0;transform:scale(1)}
+    50%{opacity:var(--o,.8);transform:scale(1.3)}
+  }
+
+  /* ── LAYOUT ── */
+  .wrapper { position: relative; z-index: 1; }
+
+  section { position: relative; }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 18px;
+    margin: 24px auto; max-width: 500px;
+    opacity: .55;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .divider::after { background: linear-gradient(90deg, var(--gold), transparent); }
+  .divider span { color: var(--gold); font-size: 22px; letter-spacing: 6px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 28px 80px;
+    background: radial-gradient(ellipse at 50% 30%, #2d1657 0%, transparent 65%);
+  }
+
+  .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+
+  .sigil {
+    width: 110px; height: 110px;
+    margin: 0 auto 36px;
+    opacity: 0;
+    animation: fadeUp .8s .4s forwards, pulse 4s 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{filter:drop-shadow(0 0 12px #c9a84c88)}
+    50%{filter:drop-shadow(0 0 32px #c9a84ccc)}
+  }
+
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #e8c97a 0%, #c9a84c 40%, #fff8e7 70%, #c9a84c 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp .9s .6s forwards;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-style: italic;
+    color: var(--mist);
+    max-width: 620px;
+    margin: 0 auto 52px;
+    opacity: 0;
+    animation: fadeUp .9s .8s forwards;
+  }
+
+  @keyframes fadeUp {
+    from{opacity:0;transform:translateY(28px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    background: linear-gradient(135deg, #e8c97a, #c9a84c, #a07830);
+    padding: 20px 54px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+    box-shadow: 0 0 40px #c9a84c55, 0 4px 24px rgba(0,0,0,.5);
+    opacity: 0;
+    animation: fadeUp .9s 1s forwards;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #fff6dd66, transparent);
+    opacity: 0; transition: opacity .25s;
+  }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 0 60px #c9a84c88, 0 8px 32px rgba(0,0,0,.6); }
+  .cta-btn:hover::before { opacity: 1; }
+
+  .cta-small {
+    display: block; margin-top: 14px;
+    font-size: 13px; color: var(--text-dim);
+    font-style: italic;
+    opacity: 0; animation: fadeUp .9s 1.2s forwards;
+  }
+
+  /* ── PAIN SECTION ── */
+  #pain {
+    padding: 80px 0 40px;
+    background: linear-gradient(180deg, transparent, #12062299, transparent);
+  }
+
+  .pain-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4.5vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    text-align: center;
+    color: var(--mist);
+    line-height: 1.4;
+    margin-bottom: 56px;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+  @media(max-width:600px){ .pain-list{grid-template-columns:1fr} }
+
+  .pain-item {
+    background: linear-gradient(135deg, #1a0b2e88, #06040dcc);
+    border: 1px solid #2d165744;
+    border-left: 3px solid var(--gold-dim);
+    padding: 20px 22px;
+    border-radius: 2px;
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .pain-item::before { content: '◈ '; color: var(--gold-dim); }
+
+  .pain-turn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-style: italic;
+    text-align: center;
+    color: var(--gold-light);
+    line-height: 1.5;
+  }
+
+  /* ── PAIN REDESIGN ── */
+  .pain-narrative { margin-bottom: 48px; }
+  .pain-story-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-style: italic;
+    color: var(--mist);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+
+  .pain-scenarios {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 52px;
+  }
+
+  .pain-scenarios-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media(max-width:640px){ .pain-scenarios-row{grid-template-columns:1fr} }
+
+  .scenario-card {
+    display: flex; gap: 18px; align-items: flex-start;
+    background: linear-gradient(135deg, #1a0b2e99, #06040dcc);
+    border: 1px solid #2d165744;
+    padding: 26px 22px;
+    border-radius: 2px;
+    transition: border-color .3s, background .3s;
+  }
+  .scenario-card:hover { border-color: var(--gold-dim); background: linear-gradient(135deg, #2d165799, #0d0618cc); }
+  .scenario-main { border-left: 3px solid var(--gold-dim); }
+
+  .scenario-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .scenario-card strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  .scenario-card p { font-size: 15px; color: var(--text-dim); line-height: 1.7; margin: 0; }
+
+  .pain-confession {
+    background: linear-gradient(90deg, #1a0b2e55, transparent);
+    border-left: 3px solid var(--gold-dim);
+    padding: 28px 32px;
+    margin-bottom: 52px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .pain-confession p { margin-bottom: 10px; }
+  .pain-confession p:last-child { margin: 0; color: var(--mist); }
+
+  .pain-revelation {
+    text-align: center;
+    padding: 48px 32px;
+    background: radial-gradient(ellipse at 50% 50%, #2d165766, transparent 70%);
+    border: 1px solid #c9a84c22;
+    border-radius: 2px;
+  }
+  .pain-reveal-text {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(20px, 3.5vw, 30px);
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.4;
+    margin-bottom: 18px;
+  }
+  .pain-reveal-text strong { color: var(--gold); }
+  .pain-reveal-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.5vw, 22px);
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 580px; margin: 0 auto;
+    line-height: 1.7;
+  }
+  .pain-reveal-sub em { color: var(--gold-light); }
+
+  #story {
+    padding: 40px 0 100px;
+  }
+
+  /* ── SOLUTION STEPS ── */
+  .solution-steps {
+    margin: 60px 0 48px;
+    background: linear-gradient(160deg, #1a0b2e77, #06040dcc);
+    border: 1px solid #c9a84c22;
+    border-top: 2px solid var(--gold-dim);
+    padding: 48px 40px;
+    border-radius: 2px;
+  }
+  @media(max-width:600px){ .solution-steps{padding:32px 22px} }
+
+  .solution-header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #2d165766;
+  }
+  .solution-header h3 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .solution-header p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-style: italic;
+    color: var(--text-dim);
+  }
+
+  .step-flow { display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: grid;
+    grid-template-columns: 56px 2px 1fr;
+    gap: 0 24px;
+    align-items: start;
+  }
+
+  .step-number {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2d1657, #1a0b2e);
+    border: 2px solid var(--gold-dim);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 18px; font-weight: 900;
+    color: var(--gold);
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+    box-shadow: 0 0 20px #c9a84c22;
+  }
+
+  .step-line {
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-dim), #2d165744);
+    min-height: 100%;
+    margin: 0 auto;
+    margin-top: 0;
+  }
+  .step-line-last { width: 2px; background: transparent; }
+
+  .step-content {
+    padding: 8px 0 44px;
+  }
+  .step-content h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+  .step-content p {
+    font-size: 16px; color: var(--text-dim);
+    line-height: 1.85;
+  }
+  .step-content p strong { color: var(--mist); font-weight: 500; }
+
+  .solution-close { margin-top: 12px; }
+
+  .story-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  .story-text {
+    font-size: 18px;
+    color: var(--text-dim);
+    line-height: 1.9;
+    margin-bottom: 22px;
+  }
+  .story-text strong { color: var(--mist); font-weight: 500; }
+  .story-text em { color: var(--gold-light); font-style: italic; }
+
+  blockquote {
+    border-left: 3px solid var(--gold);
+    margin: 44px 0;
+    padding: 18px 32px;
+    background: linear-gradient(90deg, #2d165733, transparent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-style: italic;
+    color: var(--mist);
+    line-height: 1.5;
+  }
+
+  /* ── SCIENCE ── */
+  #science {
+    padding: 100px 0;
+    background: radial-gradient(ellipse at 50% 50%, #1a0b2e55 0%, transparent 70%);
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 700;
+    text-align: center;
+    color: var(--gold);
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 56px;
+  }
+  @media(max-width:700px){ .pillars{grid-template-columns:1fr} }
+
+  .pillar {
+    background: linear-gradient(160deg, #1f0e3a, #0a0710);
+    border: 1px solid #c9a84c22;
+    border-top: 2px solid var(--gold);
+    padding: 36px 26px;
+    text-align: center;
+    border-radius: 2px;
+    transition: transform .3s, border-color .3s;
+  }
+  .pillar:hover { transform: translateY(-6px); border-color: var(--gold); }
+
+  .pillar-icon {
+    font-size: 36px; margin-bottom: 16px; display: block;
+    filter: drop-shadow(0 0 10px #c9a84c88);
+  }
+  .pillar h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--gold-light);
+    margin-bottom: 14px;
+  }
+  .pillar p { font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+
+  /* ── WHAT IS ── */
+  #product {
+    padding: 100px 0;
+  }
+
+  .product-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-style: italic;
+    text-align: center;
+    color: var(--mist);
+    margin-bottom: 60px;
+    line-height: 1.5;
+  }
+
+  .modules {
+    display: flex; flex-direction: column; gap: 22px;
+    margin-bottom: 56px;
+  }
+
+  .module {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px; align-items: start;
+    background: linear-gradient(90deg, #1a0b2e55, transparent);
+    border: 1px solid #2d165733;
+    padding: 28px 28px 28px 24px;
+    border-radius: 2px;
+    transition: background .3s;
+  }
+  .module:hover { background: linear-gradient(90deg, #2d165788, transparent); }
+
+  .module-num {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .module h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  .module p { font-size: 15px; color: var(--text-dim); line-height: 1.7; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials {
+    padding: 100px 0;
+    background: linear-gradient(180deg, transparent, #120622aa, transparent);
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  @media(max-width:640px){ .testi-grid{grid-template-columns:1fr} }
+
+  .testi {
+    background: linear-gradient(145deg, #1a0b2e, #0d0618);
+    border: 1px solid #c9a84c22;
+    padding: 32px 28px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .testi::before {
+    content: '\201C';
+    position: absolute; top: 14px; left: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px; line-height: 1;
+    color: var(--gold-dim); opacity: .4;
+  }
+  .testi-text {
+    font-style: italic;
+    font-size: 16px;
+    color: var(--mist);
+    line-height: 1.75;
+    margin-bottom: 20px;
+    padding-top: 16px;
+  }
+  .testi-author {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+  }
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 8px; }
+
+  /* ── GUARANTEE ── */
+  #guarantee {
+    padding: 100px 0;
+  }
+
+  .guarantee-box {
+    border: 1px solid var(--gold-dim);
+    background: linear-gradient(135deg, #1a0b2ecc, #06040dcc);
+    padding: 56px 48px;
+    text-align: center;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .guarantee-box::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, #c9a84c0d, transparent 65%);
+    pointer-events: none;
+  }
+  .guarantee-icon { font-size: 52px; margin-bottom: 20px; }
+  .guarantee-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--gold); margin-bottom: 18px;
+  }
+  .guarantee-box p {
+    font-size: 17px; color: var(--text-dim);
+    max-width: 560px; margin: 0 auto;
+    line-height: 1.85;
+  }
+
+  /* ── PRICING ── */
+  #pricing {
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .price-box {
+    background: linear-gradient(160deg, #1f0e3a, #0a0710);
+    border: 1px solid var(--gold-dim);
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 60px 44px;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 0 80px #c9a84c18;
+  }
+  .price-box::before {
+    content: '★ ACESSO IMEDIATO ★';
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #e8c97a, #c9a84c);
+    color: var(--ink);
+    font-family: 'Cinzel', serif;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 3px;
+    padding: 5px 22px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .price-from {
+    font-size: 14px; color: var(--text-dim);
+    text-decoration: line-through; margin-bottom: 6px;
+  }
+  .price-main {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(48px, 8vw, 72px);
+    font-weight: 900;
+    background: linear-gradient(135deg, #e8c97a, #c9a84c);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-sub { font-size: 14px; color: var(--text-dim); margin-bottom: 36px; font-style: italic; }
+
+  .price-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+  .price-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid #2d165733;
+    font-size: 15px; color: var(--mist);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .price-features li::before { content: '◈'; color: var(--gold); flex-shrink: 0; }
+
+  /* ── URGENCY ── */
+  .urgency {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: 20px;
+    display: block;
+  }
+
+  /* ── FINAL CTA ── */
+  #final {
+    padding: 120px 0;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 100%, #2d165788, transparent 70%);
+  }
+
+  .final-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    color: var(--gold);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .final-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-style: italic;
+    color: var(--mist);
+    margin-bottom: 52px;
+    max-width: 580px;
+    margin-left: auto; margin-right: auto;
+    line-height: 1.5;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 28px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-dim);
+    border-top: 1px solid #2d165744;
+    opacity: .6;
+  }
+
+  /* ── SCROLL FADE ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity .75s ease, transform .75s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FLOATING PARTICLES ── */
+  .particle {
+    position: fixed; pointer-events: none; z-index: 0;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold);
+    animation: floatUp var(--fd, 8s) var(--fd2, 0s) linear infinite;
+    opacity: 0;
+  }
+  @keyframes floatUp {
+    0%{opacity:0;transform:translateY(0) scale(1)}
+    10%{opacity:.6}
+    90%{opacity:.2}
+    100%{opacity:0;transform:translateY(-100vh) scale(.3)}
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<canvas id="starfield"></canvas>
+
+<div class="wrapper">
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero">
+    <p class="eyebrow">Uma Revelação Que Vai Mudar Tudo</p>
+
+    <!-- SVG Sigil -->
+    <svg class="sigil" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="55" cy="55" r="50" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4 6"/>
+      <circle cx="55" cy="55" r="35" stroke="#C9A84C" stroke-width=".5" opacity=".5"/>
+      <path d="M55 10 L80 47.5 L65 82.5 L45 82.5 L30 47.5 Z" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+      <path d="M55 100 L80 62.5 L65 27.5 L45 27.5 L30 62.5 Z" stroke="#C9A84C" stroke-width="1.2" fill="none" opacity=".4"/>
+      <circle cx="55" cy="55" r="6" fill="#C9A84C" opacity=".9"/>
+      <circle cx="55" cy="55" r="3" fill="#E8C97A"/>
+    </svg>
+
+    <h1>Código da<br>Atração</h1>
+    <p class="hero-sub">O método que une a espiritualidade ancestral, a Lei da Atração e a Física Quântica para trazer de volta — ou atrair pela primeira vez — o amor que a sua alma já escolheu.</p>
+    <a href="https://go.pepperpay.com.br/irl0x" class="cta-btn">QUERO ATIVAR MEU CÓDIGO AGORA</a>
+    <span class="cta-small">Acesso imediato • Garantia de 7 dias • 100% digital</span>
+  </section>
+
+  <!-- ═══════════════ PAIN ═══════════════ -->
+  <section id="pain">
+    <div class="container">
+
+      <p class="pain-intro reveal">Existe alguém que ocupa seus pensamentos.<br><em>E por algum motivo, ele não avança.</em></p>
+
+      <div class="pain-narrative reveal">
+        <p class="pain-story-text">Talvez seja um ex que foi embora e você nunca aceitou de verdade. Talvez seja aquele amigo que você olha de um jeito diferente — e sente que ele sente também, mas nada acontece. Ou talvez seja alguém que você ainda mal conhece, mas que desperta em você uma certeza que não consegue explicar.</p>
+        <p class="pain-story-text">Não importa de onde vem essa conexão. O que importa é que ela é <strong>real para você</strong> — e ao mesmo tempo parece impossível de alcançar.</p>
+        <p class="pain-story-text">Ele não avança. Fica na fronteira. Ou está disponível para o mundo inteiro, menos para você.</p>
+      </div>
+
+      <div class="pain-scenarios reveal">
+        <div class="scenario-card scenario-main">
+          <span class="scenario-icon">💔</span>
+          <div>
+            <strong>Um ex que foi embora — e você sente que ainda não acabou</strong>
+            <p>Teve algo real entre vocês. E mesmo depois do término, a ligação não desapareceu. Você vê que ele também não esqueceu de vez, mas nada se move. Ele não volta, mas também não segue em frente de verdade. E você fica presa nesse limbo sem conseguir entender o que está impedindo o reencontro.</p>
+          </div>
+        </div>
+        <div class="pain-scenarios-row">
+          <div class="scenario-card">
+            <span class="scenario-icon">🔒</span>
+            <div>
+              <strong>Um amigo que desperta algo mais — mas ele não dá o passo</strong>
+              <p>Tem olhares, momentos, uma tensão que os dois sentem. Mas na hora de avançar, ele recua ou finge não perceber. Você está presa entre não querer arriscar a amizade e não conseguir ignorar o que sente.</p>
+            </div>
+          </div>
+          <div class="scenario-card">
+            <span class="scenario-icon">✨</span>
+            <div>
+              <strong>Alguém que você deseja — mas que ainda nem sabe que você existe</strong>
+              <p>Às vezes a atração nasce antes de qualquer contato. Você sente uma conexão inexplicável com alguém que ainda não faz parte da sua vida — e quer mudar isso. Quer que ele te enxergue, te sinta, te procure.</p>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-icon">😶</span>
+          <div>
+            <strong>Alguém que te vê — mas permanece sempre no mesmo lugar</strong>
+            <p>Há contato, há conversa, às vezes há até carinho. Mas ele não avança. Não te escolhe de verdade. Está presente o suficiente para você não desistir, e distante o suficiente para você nunca ter certeza.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pain-confession reveal">
+        <p>Você já tentou de tudo. Deu espaço. Mandou mensagem. Ficou em silêncio. Mudou o visual. Tentou ficar bem sem ele. Tentou esquecer. Rezou. Pediu pro universo. Consultou o tarot.</p>
+        <p>E ainda está aqui. Ainda sentindo o mesmo. Ainda esperando algo mudar.</p>
+      </div>
+
+      <div class="pain-revelation reveal">
+        <p class="pain-reveal-text">Isso não é fraqueza sua.<br>Isso é um <strong>desalinhamento de frequência</strong> — e tem solução.</p>
+        <p class="pain-reveal-sub">A atração não acontece só no plano físico. Ela começa num nível que a maioria das pessoas nunca aprendeu a acessar. E é exatamente aí que o <em>Código da Atração</em> age.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ STORY / SOLUÇÃO ═══════════════ -->
+  <section id="story">
+    <div class="container">
+      <span class="story-label reveal">Por Que Ele Está Distante — E Como Mudar Isso</span>
+
+      <p class="story-text reveal">Existe uma razão muito específica pela qual a pessoa que você ama parece <strong>não te enxergar da forma que você merece.</strong> E essa razão não tem nada a ver com a sua aparência, com o que você disse ou deixou de dizer, ou com o quanto você merece ser amada.</p>
+
+      <p class="story-text reveal">Tem a ver com <em>frequência.</em></p>
+
+      <blockquote class="reveal">"Toda matéria é energia. Tudo no universo vibra em frequências específicas — incluindo as emoções humanas, os pensamentos e as conexões entre pessoas."<br><span style="font-size:14px;opacity:.6;font-family:'Cinzel',serif;letter-spacing:2px;">— Princípio da Física Quântica</span></blockquote>
+
+      <p class="story-text reveal">Quando você deseja intensamente alguém que está distante, algo paradoxal acontece: <strong>a energia do desejo não-correspondido cria um campo de repulsão.</strong> Não porque você seja errada — mas porque o estado emocional de "querer e não ter" emite uma frequência de carência, e carência afasta. O campo quântico ao redor de você literalmente sinaliza para ele: <em>"ela ainda não chegou lá."</em></p>
+
+      <p class="story-text reveal">O Código da Atração existe para <strong>inverter esse campo</strong> — e fazer você emitir a frequência exata que cria atração irresistível. Não manipulação. Não jogo. <em>Alinhamento real.</em></p>
+
+      <div class="solution-steps reveal">
+        <div class="solution-header">
+          <h3>Como o Código Funciona na Prática</h3>
+          <p>Um processo de 4 etapas que age nos planos energético, subconsciente e espiritual simultaneamente</p>
+        </div>
+
+        <div class="step-flow">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Diagnóstico do Bloqueio</h4>
+              <p>Primeiro, você vai identificar com precisão <strong>qual campo energético está criando a barreira</strong> entre você e ele. Pode ser uma crença de não-merecimento, um contrato kármico, um padrão herdado, ou um bloqueio de frequência criado pelo próprio ciclo de sofrimento. Sem esse diagnóstico, qualquer técnica de atração falha — porque você estaria construindo sobre uma base quebrada.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Limpeza e Reprogramação</h4>
+              <p>Aqui acontece a virada. Através de rituais energéticos guiados e meditações em frequência Theta — a faixa onde o subconsciente é mais receptivo — você vai <strong>apagar os padrões que te mantém invisível para ele</strong> e instalar uma nova identidade energética: a de uma mulher que já vive no amor que deseja, com certeza e equilíbrio. Essa mudança interna é o que o campo quântico ao redor de você começa a transmitir.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <h4>Ativação do Elo Quântico</h4>
+              <p>A Física Quântica comprova o entrelaçamento: duas partículas, uma vez conectadas, se influenciam independentemente da distância. Você e ele já têm uma conexão — o problema é que ela está dormindo. Nessa etapa, você vai <strong>ativar e intensificar esse elo no plano sutil</strong>, criando uma corrente invisível de atração que começa a agir na mente e nos sentimentos dele, mesmo que ele não entenda o porquê. É quando as mensagens "do nada" começam a aparecer.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-line-last"></div>
+            <div class="step-content">
+              <h4>Ancoragem e Manifestação Física</h4>
+              <p>A última etapa converte o invisível em visível. Você vai usar o protocolo de manifestação do Código — com rituais específicos, afirmações quânticas e práticas de ancoragem — para <strong>trazer a atração do campo energético para o plano físico</strong>: a conversa que ele vai iniciar, a aproximação que vai surgir, o comportamento dele que vai mudar. E você vai saber exatamente como agir em cada momento para não quebrar o campo e consolidar a conexão de forma duradoura.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-close reveal">
+        <p class="story-text">O resultado não é um truque. É uma <em>transformação real na frequência que você emite</em> — e quando sua frequência muda, o que o campo ao seu redor atrai também muda. Ele começa a sentir algo diferente em você, mesmo sem conseguir nomear. E aí o inevitável acontece.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ SCIENCE ═══════════════ -->
+  <section id="science">
+    <div class="container">
+      <h2 class="section-title reveal">Os 3 Pilares do Código</h2>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <span class="pillar-icon">🌀</span>
+          <h3>Lei da Atração</h3>
+          <p>O universo é um espelho perfeito. O que você irradia, você magnetiza. Aprenda a emitir a frequência correta do amor — não do desespero, mas da certeza.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">⚛️</span>
+          <h3>Física Quântica</h3>
+          <p>O entrelaçamento quântico prova que duas partículas podem estar conectadas além do espaço e do tempo. O mesmo vale para duas almas. Você vai aprender a ativar esse elo.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🔮</span>
+          <h3>Espiritualidade Sagrada</h3>
+          <p>Práticas ancestrais de manifestação, rituais de intenção e meditações de alta frequência que trabalham nos planos que a mente racional não alcança.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ PRODUCT ═══════════════ -->
+  <section id="product">
+    <div class="container">
+      <h2 class="section-title reveal">O Que Está Dentro do Código da Atração</h2>
+      <p class="product-intro reveal">Um sistema completo de 7 camadas — desenvolvido para reestruturar seu campo energético e criar um elo magnético irresistível</p>
+
+      <div class="modules">
+        <div class="module reveal">
+          <div class="module-num">01</div>
+          <div>
+            <h4>O Despertar Quântico</h4>
+            <p>Descubra por que você está bloqueado e como a sua frequência atual está repelindo o amor. A primeira camada é o diagnóstico energético que muda tudo.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">02</div>
+          <div>
+            <h4>A Limpeza do Campo</h4>
+            <p>Rituais de limpeza energética para remover crenças limitantes, contratos kármicos e padrões inconscientes que sabotam sua atração — muitas vezes herdados de vidas passadas.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">03</div>
+          <div>
+            <h4>A Conexão de Almas</h4>
+            <p>Técnicas de entrelaçamento quântico para criar e fortalecer o elo invisível entre você e a pessoa desejada, além do espaço e do tempo.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">04</div>
+          <div>
+            <h4>A Programação do Subconsciente</h4>
+            <p>Técnicas de reprogramação profunda para reescrever as crenças que te mantêm invisível para ele — substituindo a frequência de carência pela frequência da certeza, do merecimento e do amor já conquistado.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">05</div>
+          <div>
+            <h4>O Ritual de Manifestação</h4>
+            <p>O protocolo completo passo a passo para manifestar o retorno ou a aproximação da pessoa amada, com datas, horários e alinhamentos energéticos precisos.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">06</div>
+          <div>
+            <h4>A Manutenção da Chama</h4>
+            <p>Como manter o campo de atração ativo, vibrar no amor mesmo na ausência física, e nutrir a conexão espiritual dia após dia até a manifestação se concretizar no plano físico.</p>
+          </div>
+        </div>
+        <div class="module reveal">
+          <div class="module-num">07</div>
+          <div>
+            <h4>A Selagem do Destino</h4>
+            <p>O ritual final de ancoragem — para quando a manifestação começar a se materializar. Você vai saber exatamente como agir para não quebrar o campo e consolidar o amor de forma duradoura.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ TESTIMONIALS ═══════════════ -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">O Código Já Funcionou Para Elas</h2>
+
+      <div class="testi-grid reveal">
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">Eu tinha desistido. Três anos separada, sem contato. Na terceira semana aplicando o Código, ele me mandou mensagem do nada dizendo que precisava conversar. Hoje estamos juntos de novo — e melhor do que nunca.</p>
+          <div class="testi-author">MARIANA C. — SÃO PAULO, SP</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">Não acreditava muito nessas coisas, mas resolvi tentar. No 11º dia, ele apareceu no meu trabalho. Nunca tinha feito isso. Estava sem conseguir explicar por que tinha ido lá. Hoje somos noivos.</p>
+          <div class="testi-author">FERNANDA R. — CURITIBA, PR</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">O que mais me surpreendeu foi a paz que senti desde o primeiro ritual. Parei de sofrer de um jeito que não entendia. E aí as coisas começaram a se mover sozinhas, como se o universo finalmente estivesse do meu lado.</p>
+          <div class="testi-author">JULIANA M. — BELO HORIZONTE, MG</div>
+        </div>
+        <div class="testi">
+          <div class="stars">★★★★★</div>
+          <p class="testi-text">Tentei de tudo — simpatia, tarô, coach de relacionamento. Nada funcionava. O Código da Atração foi diferente porque trabalha no nível que os outros métodos ignoram. É como se ele me ensinasse o idioma que o universo fala.</p>
+          <div class="testi-author">PATRICIA L. — RECIFE, PE</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ GUARANTEE ═══════════════ -->
+  <section id="guarantee">
+    <div class="container">
+      <div class="guarantee-box reveal">
+        <div class="guarantee-icon">🛡️</div>
+        <h3>Garantia Sagrada de 7 Dias</h3>
+        <p>Acesse todo o conteúdo do Código da Atração. Aplique os rituais. Sinta a energia se mover. Se por qualquer motivo você não estiver satisfeita, basta enviar um e-mail em até 7 dias e devolvemos cada centavo — sem perguntas, sem burocracia, sem julgamento. A transformação precisa ser real. Ou o investimento volta para você.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span>✦ ✦ ✦</span></div>
+
+  <!-- ═══════════════ PRICING ═══════════════ -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title reveal">Ative Seu Código Agora</h2>
+
+      <div class="price-box reveal">
+        <p class="price-from">De R$ 197,00</p>
+        <p class="price-main">R$ 37</p>
+        <p class="price-sub">pagamento único • acesso imediato</p>
+
+        <ul class="price-features">
+          <li>Os 7 Módulos Completos do Código da Atração</li>
+          <li>Manual dos Rituais de Manifestação</li>
+          <li>Calendário Energético de 30 Dias</li>
+          <li>🎁 Bônus 1: Afirmações Quânticas — sequência de afirmações programadas para reprogramar sua frequência e emitir o campo magnético certo</li>
+          <li>🎁 Bônus 2: Guia de Mensagens Energéticas — o que escrever para ele nas redes sociais em cada fase da atração, sem parecer ansiosa nem afastá-lo</li>
+          <li>Acesso Vitalício + Todas as Atualizações</li>
+        </ul>
+
+        <a href="https://go.pepperpay.com.br/irl0x" class="cta-btn" style="width:100%;text-align:center;display:block;">
+          SIM — QUERO MEUS CÓDIGOS AGORA
+        </a>
+
+        <span class="urgency" style="display:block;margin-top:22px;font-size:11px;opacity:.7">
+          ⚠ Esta oferta é por tempo limitado · Vagas restritas
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FINAL CTA ═══════════════ -->
+  <section id="final">
+    <div class="container">
+      <h2 class="final-title reveal">O Universo Não Mente.<br>Mas Ele Exige que Você Se Mova.</h2>
+      <p class="final-sub reveal">A pessoa que você ama existe no campo quântico esperando pela sua frequência certa. O Código da Atração vai te ensinar exatamente como chegar até ela — no plano invisível que antecede toda realidade visível.</p>
+      <a href="https://go.pepperpay.com.br/irl0x" class="cta-btn reveal">COMEÇAR MINHA TRANSFORMAÇÃO AGORA</a>
+      <span class="cta-small reveal" style="animation:none;opacity:1">Acesso imediato • Garantia de 7 dias</span>
+    </div>
+  </section>
+
+</div><!-- /wrapper -->
+
+<footer>
+  <p>© 2025 Código da Atração · Todos os direitos reservados<br>
+  <span style="opacity:.6">Este produto tem caráter espiritual e educativo. Os resultados variam de pessoa para pessoa.</span></p>
+</footer>
+
+<script>
+  // ── STARFIELD ──
+  (function(){
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    function resize(){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    function initStars(){
+      stars = [];
+      for(let i=0;i<160;i++){
+        stars.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          r: Math.random()*1.4+.2,
+          a: Math.random(),
+          speed: Math.random()*.015+.005,
+          phase: Math.random()*Math.PI*2
+        });
+      }
+    }
+    function drawStars(t){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      stars.forEach(s=>{
+        const alpha = (Math.sin(t*s.speed+s.phase)+1)/2 * s.a;
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    resize(); initStars(); requestAnimationFrame(drawStars);
+    window.addEventListener('resize',()=>{resize();initStars();});
+  })();
+
+  // ── FLOATING PARTICLES ──
+  (function(){
+    for(let i=0;i<18;i++){
+      const p = document.createElement('div');
+      p.className='particle';
+      p.style.cssText=`
+        left:${Math.random()*100}vw;
+        bottom:${Math.random()*20}vh;
+        --fd:${6+Math.random()*10}s;
+        --fd2:${Math.random()*8}s;
+        width:${2+Math.random()*3}px;
+        height:${2+Math.random()*3}px;
+        opacity:.0;
+      `;
+      document.body.appendChild(p);
+    }
+  })();
+
+  // ── SCROLL REVEAL ──
+  (function(){
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
+  })();
+</script>
+</body>
+</html>
